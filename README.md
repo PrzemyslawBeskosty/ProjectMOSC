@@ -9,6 +9,7 @@ Planem zadania było ukończenie zadania w skali minimum 80%.
 ###### W zadaniu wykonano następujące rzeczy:
 - Dodano pełną obsługę CRUD dla wszystkich z 3 pozycji: Klient, System i Umowa.
 - Dodano możliwość pobrania danych za pomocą arkusza kalkulacyjnego o formacie '.xlsx' dla Umów.
+- Dodano testy jednostkowe
 
 ###### Braki w zadaniu:
 - Klient: Brak komunikatu w przypadku dodania niepoprawnego wpisu.
@@ -16,7 +17,7 @@ Planem zadania było ukończenie zadania w skali minimum 80%.
 - Umowa: Brak komunikatu w przypadku dodania niepoprawnego wpisu.
 - Brak możliwości pobrania danych za pomocą arkusza kalkulacyjnego o formacie '.xls' 
 - Dane poprzez arkusz kalkulacyjny dodają się tylko gdą sa wszystkie. Brak stosownego komunikatu, dlaczego dane nie dodały się.
-- Dodanie testów jednostkowych
+
 
 Aplikacja została napisana w sposób poprawny, lecz z faktu na czas na oddanie zadania to testy jednostkowowe zostały pominięte. Decyzja na kompatybilność
 
