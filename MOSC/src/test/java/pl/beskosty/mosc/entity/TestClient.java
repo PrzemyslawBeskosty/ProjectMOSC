@@ -1,6 +1,5 @@
 package pl.beskosty.mosc.entity;
 
-import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -71,7 +70,6 @@ public class TestClient {
         Client client = new Client();
         //When
         client.setStatus("ANY STATUS HERE?");
-        boolean isActive = client.isActive();
         //Then
         assertNotEquals(Status.ACTIVE.getValue(), client.getStatusBundled());
     }
@@ -82,7 +80,6 @@ public class TestClient {
         Client client = new Client();
         //When
         client.setStatus("A");
-        boolean isActive = client.isActive();
         //Then
         assertEquals(Status.ACTIVE.getValue(), client.getStatusBundled());
     }

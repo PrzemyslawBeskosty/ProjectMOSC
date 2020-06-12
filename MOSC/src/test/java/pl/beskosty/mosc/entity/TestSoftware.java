@@ -70,7 +70,6 @@ public class TestSoftware {
         Software software = new Software();
         //When
         software.setStatus("ANY STATUS HERE?");
-        boolean isActive = software.isActive();
         //Then
         assertNotEquals(Status.ACTIVE.getValue(), software.getStatusBundled());
     }
@@ -81,7 +80,6 @@ public class TestSoftware {
         Software software = new Software();
         //When
         software.setStatus("A");
-        boolean isActive = software.isActive();
         //Then
         assertEquals(Status.ACTIVE.getValue(), software.getStatusBundled());
     }
