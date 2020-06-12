@@ -19,6 +19,7 @@
         
         <spring.framework.version>5.2.6.RELEASE</spring.framework.version>
         <apache.tiles.version>3.0.8</apache.tiles.version>
+        <junit.jupiter.version>5.5.2</junit.jupiter.version>
     </properties>
     <!-- DEPENDENCIES -->
     <dependencies>
@@ -49,6 +50,25 @@
         </dependency>
 
 
+        <!-- JUNIT 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- java ee -->
         <dependency>
             <groupId>javax</groupId>
@@ -256,6 +276,10 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
             </plugin>
         </plugins>
     </build>
