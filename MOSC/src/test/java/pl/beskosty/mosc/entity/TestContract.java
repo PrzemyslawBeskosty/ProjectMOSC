@@ -1,8 +1,11 @@
 package pl.beskosty.mosc.entity;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+import pl.beskosty.mosc.enums.Status;
 
 /**
  *
@@ -40,6 +43,42 @@ public class TestContract {
         boolean isActive = contract.isActive();
         //Then
         assertTrue(isActive);
+    }
+
+    @Test
+    public void checkNullOnStatusBundledOnConstructor() {
+        //Given
+        Contract contract = new Contract();
+        //Then
+        assertNotEquals(null, contract.getStatusBundled());
+    }
+
+    @Test
+    public void checkStatusBundledOnConstructor() {
+        //Given
+        Contract contract = new Contract();
+        //Then
+        assertNotEquals(Status.ACTIVE.getValue(), contract.getStatusBundled());
+    }
+
+    @Test
+    public void checkStatusBundledWithIncorrectStatus() {
+        //Given
+        Contract contract = new Contract();
+        //When
+        contract.setStatus("ANY STATUS HERE?");
+        //Then
+        assertNotEquals(Status.ACTIVE.getValue(), contract.getStatusBundled());
+    }
+
+    @Test
+    public void checkStatusBundledWithCorrectStatus() {
+        //Given
+        Contract contract = new Contract();
+        //When
+        contract.setStatus("A");
+        //Then
+        assertEquals(Status.ACTIVE.getValue(), contract.getStatusBundled());
     }
 
 }
