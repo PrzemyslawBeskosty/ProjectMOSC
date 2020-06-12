@@ -73,6 +73,15 @@ public class Contract {
     }
 
     /**
+     * Function return full name of status
+     *
+     * @return Full name from Status.
+     */
+    public String getStatusBundled() {
+        return Status.getStatusFromCode(status).getValue();
+    }
+
+    /**
      * Returns a full entry about the cash inflow in one String.
      *
      * @return Full string of cash inflow. Eg. '4500 zł netto'
@@ -88,15 +97,6 @@ public class Contract {
      */
     public String getAmountPeriodBundled() {
         return AmountPeriod.getAmountPeriodFromCode(amountPeriod).getValue();
-    }
-
-    /**
-     * Function return full name of status
-     *
-     * @return Full name from Status.
-     */
-    public String getStatusBundled() {
-        return Status.getStatusFromCode(status).getValue();
     }
 
     //Getters and setters
