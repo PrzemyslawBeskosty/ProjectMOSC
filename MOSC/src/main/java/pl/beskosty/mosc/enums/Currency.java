@@ -10,7 +10,7 @@ import java.util.Map;
 public enum Currency {
     PLN("PLN", "Złoty", "zł"),
     USD("USD", "Dolar", "$"),
-    UNDEFINED("X", "Nieokreślony", "???");
+    UNDEFINED("X", "Nieokreślony", "?");
 
     private String code;
     private String value;
