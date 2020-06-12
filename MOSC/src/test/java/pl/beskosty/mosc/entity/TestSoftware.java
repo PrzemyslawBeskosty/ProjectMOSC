@@ -1,8 +1,11 @@
 package pl.beskosty.mosc.entity;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+import pl.beskosty.mosc.enums.Status;
 
 /**
  *
@@ -26,10 +29,10 @@ public class TestSoftware {
     @Test
     public void isActiveWithIncorrectStatus() {
         //Given
-        Software client = new Software();
+        Software software = new Software();
         //When
-        client.setStatus("ANY STATUS HERE?");
-        boolean isActive = client.isActive();
+        software.setStatus("ANY STATUS HERE?");
+        boolean isActive = software.isActive();
         //Then
         assertFalse(isActive);
     }
@@ -37,12 +40,50 @@ public class TestSoftware {
     @Test
     public void isActiveWithCorrectStatus() {
         //Given
-        Software client = new Software();
+        Software software = new Software();
         //When
-        client.setStatus("A");
-        boolean isActive = client.isActive();
+        software.setStatus("A");
+        boolean isActive = software.isActive();
         //Then
         assertTrue(isActive);
+    }
+
+    @Test
+    public void checkNullOnStatusBundledOnConstructor() {
+        //Given
+        Software software = new Software();
+        //Then
+        assertNotEquals(null, software.getStatusBundled());
+    }
+
+    @Test
+    public void checkStatusBundledOnConstructor() {
+        //Given
+        Software software = new Software();
+        //Then
+        assertNotEquals(Status.ACTIVE.getValue(), software.getStatusBundled());
+    }
+
+    @Test
+    public void checkStatusBundledWithIncorrectStatus() {
+        //Given
+        Software software = new Software();
+        //When
+        software.setStatus("ANY STATUS HERE?");
+        boolean isActive = software.isActive();
+        //Then
+        assertNotEquals(Status.ACTIVE.getValue(), software.getStatusBundled());
+    }
+
+    @Test
+    public void checkStatusBundledWithCorrectStatus() {
+        //Given
+        Software software = new Software();
+        //When
+        software.setStatus("A");
+        boolean isActive = software.isActive();
+        //Then
+        assertEquals(Status.ACTIVE.getValue(), software.getStatusBundled());
     }
 
 }
