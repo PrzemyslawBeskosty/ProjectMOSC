@@ -1,5 +1,6 @@
 package pl.beskosty.mosc.entity;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.beskosty.mosc.enums.AmountType;
 import pl.beskosty.mosc.enums.Currency;
@@ -44,6 +46,9 @@ public class Contract {
     @Column(name = "date_to")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateTo;
+
+    @Transient
+    private DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
     @Column(name = "amount")
     private double amount;
@@ -96,7 +101,7 @@ public class Contract {
      * @return Full string of cash inflow. Eg. '4500 zł netto'
      */
     public String getCashInflows() {
-        return amount + " " + Currency.getCurrencyFromCode(currency).getShortcutValue() + " " + AmountType.getAmmountTypeFromCode(amountType).getValue();
+        return decimalFormat.format(amount) + " " + Currency.getCurrencyFromCode(currency).getShortcutValue() + " " + AmountType.getAmmountTypeFromCode(amountType).getValue();
     }
 
     //Getters and setters
