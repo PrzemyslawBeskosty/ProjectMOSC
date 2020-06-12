@@ -52,4 +52,5 @@ Aplikacja została sprawdzona na kilku przeglądarkach aby sprawdzić jej dział
 - Mozilla Firefox - Wersja 76.0
 - Google Chrome - Wersja 83.0.4103.97
 - Internet Explorer - Wersja 11.900.18362.0
+
 Aplikacja chodziła zgodnie na wszystkich przeglądarkach.
