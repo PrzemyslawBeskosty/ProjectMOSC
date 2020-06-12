@@ -82,21 +82,21 @@ public class Contract {
     }
 
     /**
-     * Returns a full entry about the cash inflow in one String.
-     *
-     * @return Full string of cash inflow. Eg. '4500 zł netto'
-     */
-    public String getCashInflows() {
-        return amount + " " + Currency.getCurrencyFromCode(currency).getShortcutValue() + " " + AmountType.getAmmountTypeFromCode(amountType).getValue();
-    }
-
-    /**
      * Function return full name of period time for amount.
      *
      * @return Full name for AmmountPeriod.
      */
     public String getAmountPeriodBundled() {
         return AmountPeriod.getAmountPeriodFromCode(amountPeriod).getValue();
+    }
+
+    /**
+     * Returns a full entry about the cash inflow in one String.
+     *
+     * @return Full string of cash inflow. Eg. '4500 zł netto'
+     */
+    public String getCashInflows() {
+        return amount + " " + Currency.getCurrencyFromCode(currency).getShortcutValue() + " " + AmountType.getAmmountTypeFromCode(amountType).getValue();
     }
 
     //Getters and setters
