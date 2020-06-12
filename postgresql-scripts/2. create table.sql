@@ -1,0 +1,30 @@
+-- CREATE OF CLIENTS TABLE
+CREATE TABLE clients (
+	order_id SERIAL PRIMARY KEY ,
+	name VARCHAR(100) NOT NULL,
+	status VARCHAR(1) NOT NULL
+);
+
+-- CREATE OF SYSTEMS TABLE WITH ID FROM CLIENTS
+CREATE TABLE systems (
+	order_id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	description VARCHAR(255),
+	tech_desc VARCHAR(255),
+	client_id INTEGER REFERENCES clients (order_id) NOT NULL,
+	status VARCHAR(1) NOT NULL
+);
+
+-- CREATE OF CONTRACTS TABLE WITH ID FROM SYSTEMS
+CREATE TABLE contracts (
+	order_id SERIAL PRIMARY KEY,
+	contract_number VARCHAR(20) UNIQUE NOT NULL,
+	system_id INTEGER REFERENCES systems (order_id) NOT NULL,
+	date_from DATE NOT NULL,
+	date_to DATE NOT NULL,
+	amount INTEGER NOT NULL,
+	currency VARCHAR(3) NOT NULL,
+	amount_type VARCHAR(3) NOT NULL,
+	amount_period VARCHAR(10) NOT NULL,
+	status VARCHAR(1) NOT NULL
+);

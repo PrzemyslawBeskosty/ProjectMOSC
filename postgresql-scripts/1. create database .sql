@@ -1,0 +1,2 @@
+-- DROP DATABASE moscdev;
+CREATE DATABASE moscdev;
