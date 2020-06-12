@@ -176,4 +176,94 @@ public class TestContract {
         assertEquals(AmountPeriod.YEARLY.getValue(), contract.getAmountPeriodBundled());
     }
 
+    @Test
+    public void checkNullOnCashInflowsOnConstructor() {
+        //Given
+        Contract contract = new Contract();
+        //Then
+        assertNotEquals(null, contract.getCashInflows());
+    }
+
+    @Test
+    public void checkCashInflowsOnConstructor() {
+        //Given
+        Contract contract = new Contract();
+        //Then
+        assertEquals("0,00 zł Nieokreślony", contract.getCashInflows());
+    }
+
+    @Test
+    public void checkCashInflowsWithAmountAsInt() {
+        //Given
+        Contract contract = new Contract();
+        //Then
+        contract.setAmount(100);
+        //Then
+        assertEquals("100,00 zł Nieokreślony", contract.getCashInflows());
+    }
+
+    @Test
+    public void checkCashInflowsWithAmountAsThreeDecimalDoubleAboveHalf() {
+        //Given
+        Contract contract = new Contract();
+        //Then
+        contract.setAmount(1.506);
+        //Then
+        assertEquals("1,51 zł Nieokreślony", contract.getCashInflows());
+    }
+
+    @Test
+    public void checkCashInflowsWithAmountAsThreeDecimalDoubleOnHalf() {
+        //Given
+        Contract contract = new Contract();
+        //Then
+        contract.setAmount(1.505);
+        //Then
+        assertEquals("1,50 zł Nieokreślony", contract.getCashInflows());
+    }
+
+    @Test
+    public void checkCashInflowsWithAmountAsThreeDecimalDoubleBelowHalf() {
+        //Given
+        Contract contract = new Contract();
+        //Then
+        contract.setAmount(1.504);
+        //Then
+        assertEquals("1,50 zł Nieokreślony", contract.getCashInflows());
+    }
+
+    @Test
+    public void checkCashInflowsWithIncorrectCurrency() {
+        //Given
+        Contract contract = new Contract();
+        //When
+        contract.setCurrency("EURO");
+        //Then
+        assertEquals("0,00 ? Nieokreślony", contract.getCashInflows());
+    }
+
+    @Test
+    public void checkCashInflowsWithCorrectValuesOne() {
+        //Given
+        Contract contract = new Contract();
+        //When
+        contract.setAmount(100);
+        contract.setCurrency("USD");
+        contract.setAmountType("BRU");
+        //Then
+        assertEquals("100,00 $ brutto", contract.getCashInflows());
+    }
+
+    @Test
+    public void checkCashInflowsWithCorrectValuesTwo() {
+        //Given
+        Contract contract = new Contract();
+        //When
+        contract.setAmount(0.01);
+        contract.setCurrency("PLN");
+        contract.setAmountType("NET");
+        //Then
+        assertEquals("0,01 zł netto", contract.getCashInflows());
+    }
+
 }
